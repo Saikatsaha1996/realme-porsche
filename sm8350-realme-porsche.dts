@@ -1,0 +1,438 @@
+/dts-v1/;
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator.h>
+#include <dt-bindings/dma/qcom-gpi.h>
+#include <dt-bindings/iio/qcom,spmi-adc7-pm8350.h>
+#include <dt-bindings/iio/qcom,spmi-adc7-pm8350b.h>
+#include <dt-bindings/iio/qcom,spmi-adc7-pmk8350.h>
+#include <dt-bindings/iio/qcom,spmi-adc7-pmr735a.h>
+#include <dt-bindings/iio/qcom,spmi-adc7-pmr735b.h>
+#include "sm8350.dtsi"
+#include "pm8350.dtsi"
+#include "pm8350b.dtsi"
+#include "pm8350c.dtsi"
+#include "pmk8350.dtsi"
+#include "pmr735a.dtsi"
+#include "pmr735b.dtsi"
+
+/ {
+	model = "Realme Porsche, Qualcomm Technologies, Inc. lahaina v1 SoC";
+	compatible = "realme,porsche", "qcom,sm8350", "qcom,lahaina", "qcom,sm8350-mtp", "qcom,lahaina-mtp";
+	qcom,msm-id = <0x19f 0x20001 0x1c8 0x20001 0x1f5 0x20001>;
+	qcom,board-id = <0 0>;
+	interrupt-parent = <0x1>;
+        chassis-type = "handset";
+
+	#address-cells = <2>;
+	#size-cells = <2>;
+
+	aliases {
+		serial0 = &uart2;
+	};
+
+	chosen {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+
+		stdout-path = "serial0:98c000";
+
+		framebuffer@0xe4d00000 {
+			compatible = "simple-framebuffer";
+			reg = <0x0 0xe4d00000 0x0 0x02400000>;
+			width = <1080>;
+			height = <2340>;
+			stride = <(1080 * 4)>;
+			format = "a8r8g8b8";
+		};
+	};
+
+
+        memory {
+		ddr_device_type = <0x8>;
+		device_type = "memory";
+		reg = <0x0 0x80000000 0x0 0x39700000 0x0 0xc0000000 0x1 0xc0000000>;
+	};
+
+        reserved-memory {
+		#address-cells = <0x2>;
+		#size-cells = <0x2>;
+		ranges;
+		phandle = <0x2c7>;
+
+                hyp_region@80000000 {
+			no-map;
+			reg = <0x0 0x80000000 0x0 0x600000>;
+			phandle = <0x2c8>;
+		};
+
+		xbl_aop_region@80700000 {
+			no-map;
+			reg = <0x0 0x80700000 0x0 0x160000>;
+			phandle = <0x2c9>;
+		};
+
+                reserved-memory@80860000 {
+			compatible = "qcom,cmd-db";
+			no-map;
+			reg = <0x0 0x80860000 0x0 0x20000>;
+			phandle = <0x2ca>;
+		};
+
+		res_xbl_uefi_log_region@80880000 {
+			no-map;
+			reg = <0x0 0x80880000 0x0 0x14000>;
+			phandle = <0x2cb>;
+		};
+
+		smem_region@80900000 {
+			no-map;
+			reg = <0x0 0x80900000 0x0 0x200000>;
+			phandle = <0x95>;
+		};
+
+		cpucp_fw_region@80b00000 {
+			no-map;
+			reg = <0x0 0x80b00000 0x0 0x100000>;
+			phandle = <0x2cc>;
+		};
+
+		cdsp_secure_heap@80c00000 {
+			no-map;
+			reg = <0x0 0x80c00000 0x0 0x4600000>;
+			phandle = <0xe4>;
+		};
+
+                pil_camera_region@85200000 {
+			no-map;
+			reg = <0x0 0x85200000 0x0 0x500000>;
+			phandle = <0x2ad>;
+		};
+
+		pil_video_region@85700000 {
+			no-map;
+			reg = <0x0 0x85700000 0x0 0x500000>;
+			phandle = <0xc8>;
+		};
+
+		pil_cvp_region@85c00000 {
+			no-map;
+			reg = <0x0 0x85c00000 0x0 0x500000>;
+			phandle = <0xcc>;
+		};
+
+		pil_adsp_region@86100000 {
+			no-map;
+			reg = <0x0 0x86100000 0x0 0x2100000>;
+			phandle = <0xbf>;
+		};
+
+		pil_slpi_region@88200000 {
+			no-map;
+			reg = <0x0 0x88200000 0x0 0x1500000>;
+			phandle = <0xce>;
+		};
+
+		pil_cdsp_region@89700000 {
+			no-map;
+			reg = <0x0 0x89700000 0x0 0x1400000>;
+			phandle = <0xc2>;
+		};
+
+                pil_ipa_fw_region@8b500000 {
+			no-map;
+			reg = <0x0 0x8b500000 0x0 0x10000>;
+			phandle = <0x2cd>;
+		};
+
+		pil_ipa_gsi_region@8b510000 {
+			no-map;
+			reg = <0x0 0x8b510000 0x0 0xa000>;
+			phandle = <0xc9>;
+		};
+
+		pil_gpu_region@8b51a000 {
+			no-map;
+			reg = <0x0 0x8b51a000 0x0 0x2000>;
+			phandle = <0x299>;
+		};
+
+		pil_spss_region@8b600000 {
+			no-map;
+			reg = <0x0 0x8b600000 0x0 0x100000>;
+			phandle = <0xd1>;
+		};
+
+		modem_region@8b800000 {
+			no-map;
+			reg = <0x0 0x8b800000 0x0 0x10000000>;
+			phandle = <0xba>;
+		};
+
+		qheebsp_dbg_vm_hyp_region@d0000000 {
+			no-map;
+			phandle = <0x2ce>;
+		};
+
+		pil_trustedvm_region@d0800000 {
+			no-map;
+			phandle = <0xd2>;
+		};
+
+
+                qrtr-shmem {
+			no-map;
+			reg = <0x0 0xd7ef7000 0x0 0x9000>;
+			phandle = <0x2e>;
+		};
+
+		neuron_block@0 {
+			no-map;
+			reg = <0x0 0xd7f00000 0x0 0x80000>;
+			phandle = <0x2b>;
+		};
+
+		neuron_block@1 {
+			no-map;
+			reg = <0x0 0xd7f80000 0x0 0x80000>;
+			phandle = <0x2c>;
+		};
+
+		removed_region@d8800000 {
+			no-map;
+			reg = <0x0 0xd8800000 0x0 0x8e00000>;
+			phandle = <0x2cf>;
+		};
+
+		adsp_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x0 0x0 0xffffffff>;
+			reusable;
+			alignment = <0x0 0x400000>;
+			size = <0x0 0xc00000>;
+			phandle = <0x99>;
+		};
+
+		sdsp_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x0 0x0 0xffffffff>;
+			reusable;
+			alignment = <0x0 0x400000>;
+			size = <0x0 0x800000>;
+			phandle = <0xe3>;
+		};
+
+		cdsp_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x0 0x0 0xffffffff>;
+			reusable;
+			alignment = <0x0 0x400000>;
+			size = <0x0 0x400000>;
+			phandle = <0x288>;
+		};
+
+
+                user_contig_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x0 0x0 0xffffffff>;
+			reusable;
+			alignment = <0x0 0x400000>;
+			size = <0x0 0x1000000>;
+			phandle = <0xe6>;
+		};
+
+		qseecom_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x0 0x0 0xffffffff>;
+			reusable;
+			alignment = <0x0 0x400000>;
+			size = <0x0 0x1400000>;
+			phandle = <0xd3>;
+		};
+
+		qseecom_ta_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x0 0x0 0xffffffff>;
+			reusable;
+			alignment = <0x0 0x400000>;
+			size = <0x0 0x1000000>;
+			phandle = <0xe7>;
+		};
+
+		secure_display_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x0 0x0 0xffffffff>;
+			reusable;
+			alignment = <0x0 0x400000>;
+			size = <0x0 0xa400000>;
+			phandle = <0xe8>;
+		};
+
+		cnss_wlan_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x0 0x0 0xffffffff>;
+			reusable;
+			alignment = <0x0 0x400000>;
+			#size = <0x0 0x1400000>;
+			phandle = <0x291>;
+		};
+
+		linux,cma {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x0 0x0 0xdfffffff>;
+			reusable;
+			alignment = <0x0 0x400000>;
+			size = <0x0 0x2000000>;
+			linux,cma-default;
+		};
+
+		mem_dump_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x0 0x0 0xffffffff>;
+			reusable;
+			size = <0x0 0x3000000>;
+			phandle = <0xcd>;
+		};
+
+		sp_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x0 0x0 0xffffffff>;
+			reusable;
+			alignment = <0x0 0x400000>;
+			size = <0x0 0x1000000>;
+			phandle = <0xe5>;
+		};
+
+
+                audio_cma_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x0 0x0 0xffffffff>;
+			reusable;
+			alignment = <0x0 0x400000>;
+			size = <0x0 0x1c00000>;
+			phandle = <0xe9>;
+		};
+
+		splash_region {
+			reg = <0x0 0xe4d00000 0x0 0x2300000>;
+			label = "cont_splash_region";
+			phandle = <0x2d0>;
+		};
+
+		demura_region_0 {
+			reg = <0x0 0x0 0x0 0x0>;
+			label = "demura hfc region 0";
+			phandle = <0x2d1>;
+		};
+
+		demura_region_1 {
+			reg = <0x0 0x0 0x0 0x0>;
+			label = "demura hfc region 1";
+			phandle = <0x2d2>;
+		};
+
+		dfps_data_region {
+			reg = <0x0 0xe7000000 0x0 0x100000>;
+			label = "dfps_data_region";
+			phandle = <0x29e>;
+		};
+
+		memshare_region {
+			compatible = "shared-dma-pool";
+			no-map;
+			alloc-ranges = <0x0 0x0 0x0 0xdfffffff>;
+			alignment = <0x0 0x100000>;
+			size = <0x0 0x800000>;
+			phandle = <0x30>;
+		};
+
+		non_secure_display_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x0 0x0 0xffffffff>;
+			reusable;
+			alignment = <0x0 0x400000>;
+			size = <0x0 0x6400000>;
+			phandle = <0xea>;
+		};
+
+		kboot_uboot_logmem@0x9FE00000 {
+			reg = <0x0 0x9fe00000 0x0 0x200000>;
+			compatible = "oppo,xbl_uefi_kbootlog";
+			xbluefi-offset = <0x1f7000>;
+			no-map;
+			phandle = <0x6f5>;
+		};
+
+		ramoops@0xE9700000 {
+			compatible = "ramoops";
+			reg = <0x0 0xe9700000 0x0 0x5b8000>;
+			record-size = <0x40000>;
+			console-size = <0x40000>;
+			ftrace-size = <0x200000>;
+			pmsg-size = <0x200000>;
+			devinfo-size = <0x8000>;
+			dumpinfo-size = <0x8000>;
+			rsv01info-size = <0x8000>;
+			rsv02info-size = <0x8000>;
+			rsv03info-size = <0x8000>;
+			rsv04info-size = <0x8000>;
+			rsv05info-size = <0x8000>;
+			ecc-size = <0x0>;
+			phandle = <0x6f6>;
+		};
+	};
+
+	mem-offline {
+		compatible = "qcom,mem-offline";
+		offline-sizes = <0x1 0x40000000 0x0 0x40000000 0x1 0xc0000000 0x0 0x80000000 0x2 0xc0000000 0x1 0x40000000>;
+		granule = <0x400>;
+		mboxes = <0x2 0x0>;
+	};
+                
+        &pm8350c_gpios {
+
+            mps_otg_en_ctrl {
+
+                mps_otg_en_default: mps_otg_en_default {
+                    pins = "gpio1";
+                    function = "normal";
+                    input-disable;
+                    //output-enable;
+                    output-low;
+                    bias-disable;
+                    power-source = <1>; /* 1.8V */
+                    qcom,drive-strength = <2>;
+               };
+        };
+
+        &tlmm {
+
+            pmx_ts_int_active {
+                ts_int_active: ts_int_active {
+                mux {
+                    pins = "gpio23";
+                    function = "gpio";
+                };
+                config {
+                    pins = "gpio23";
+                    drive-strength = <8>;
+                    bias-disable;
+                    input-enable;
+                    };
+                };
+            };
+            pmx_ts_reset_active {
+                ts_reset_active: ts_reset_active {
+                mux {
+                    pins = "gpio22";
+                    function = "gpio";
+                };
+                config {
+                    pins = "gpio22";
+                    drive-strength = <8>;
+                    bias-pull-up;
+                    };
+                };
+            };
+        };
