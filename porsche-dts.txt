@@ -694,6 +694,10 @@ qupv3_se4_i2c {
 	firmware-name = "postmarketos/ipa_fws.mbn";
 };
 
+&uart2 {
+        status = "ok"
+};
+
 &pm8350c_l6 {
 	/delete-property/ qcom,proxy-consumer-enable;
 	/delete-property/ qcom,proxy-consumer-current;
