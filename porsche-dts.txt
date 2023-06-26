@@ -695,7 +695,7 @@ qupv3_se4_i2c {
 };
 
 &uart2 {
-        status = "ok"
+        status = "okay"
 };
 
 &pm8350c_l6 {
