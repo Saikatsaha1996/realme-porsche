@@ -508,61 +508,6 @@
                 };
 
 # ------------------------------------------------------------------------------#
-
-                #vendor_boot
-
-                qrtr-shmem {
-                        no-map;
-                        reg = <0x00 0xd7ef7000 0x00 0x9000>;
-                        phandle = <0x2e>;
-                };
-
-                #fdt
-
-                qrtr-shmem {
-                        reg = <0x00 0xd7ef7000 0x00 0x9000>;
-                        phandle = <0x2e>;
-                        no-map;
-                };
-
-# ------------------------------------------------------------------------------#
-
-                #vendor_boot
-
-                neuron_block@0 {
-                        no-map;
-                        reg = <0x00 0xd7f00000 0x00 0x80000>;
-                        phandle = <0x2b>;
-                };
-
-                #fdt
-
-                neuron_block@0 {
-                        reg = <0x00 0xd7f00000 0x00 0x80000>;
-                        phandle = <0x2b>;
-                        no-map;
-                };
-
-# ------------------------------------------------------------------------------#
-
-                #vendor_boot
-
-                neuron_block@1 {
-                        no-map;
-                        reg = <0x00 0xd7f80000 0x00 0x80000>;
-                        phandle = <0x2c>;
-                };
-
-                #fdt
-
-                neuron_block@1 {
-                        reg = <0x00 0xd7f80000 0x00 0x80000>;
-                        phandle = <0x2c>;
-                        no-map;
-                };
-
-# ------------------------------------------------------------------------------#
-
                 #vendor_boot
 
                 removed_region@d8800000 {
@@ -583,6 +528,59 @@
 
                 removed_mem: memory@d8800000 {
                         reg = <0x0 0xd8800000 0x0 0x6800000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+                #vendor_boot
+
+                qrtr-shmem {
+                        no-map;
+                        reg = <0x00 0xd7ef7000 0x00 0x9000>;
+                        phandle = <0x2e>;
+                };
+
+                #fdt
+
+                qrtr-shmem {
+                        reg = <0x00 0xd7ef7000 0x00 0x9000>;
+                        phandle = <0x2e>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                neuron_block@0 {
+                        no-map;
+                        reg = <0x00 0xd7f00000 0x00 0x80000>;
+                        phandle = <0x2b>;
+                };
+
+                #fdt
+
+                neuron_block@0 {
+                        reg = <0x00 0xd7f00000 0x00 0x80000>;
+                        phandle = <0x2b>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                neuron_block@1 {
+                        no-map;
+                        reg = <0x00 0xd7f80000 0x00 0x80000>;
+                        phandle = <0x2c>;
+                };
+
+                #fdt
+
+                neuron_block@1 {
+                        reg = <0x00 0xd7f80000 0x00 0x80000>;
+                        phandle = <0x2c>;
                         no-map;
                 };
 
