@@ -1,0 +1,1075 @@
+
+# reserved memory common (vendor_boot, fdt, mainline)
+
+/ {
+        reserved-memory {
+                #address-cells = <0x02>;
+                #size-cells = <0x02>;
+                ranges;
+                phandle = <0x2c6>;
+
+                #vendor_boot
+
+                hyp_region@80000000 {
+                        no-map;
+                        reg = <0x00 0x80000000 0x00 0x600000>;
+                        phandle = <0x2c7>;
+                };
+
+                #fdt
+
+                hyp_region@80000000 {
+                        reg = <0x00 0x80000000 0x00 0x600000>;
+                        phandle = <0x2c8>;
+                        no-map;
+                };
+
+                #mainline
+
+                hyp_mem: memory@80000000 {
+                        reg = <0x0 0x80000000 0x0 0x600000>;
+                        no-map;
+                };
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                xbl_aop_region@80700000 {
+                        no-map;
+                        reg = <0x00 0x80700000 0x00 0x160000>;
+                        phandle = <0x2c8>;
+                };
+
+                #fdt
+
+                xbl_aop_region@80700000 {
+                        reg = <0x00 0x80700000 0x00 0x160000>;
+                        phandle = <0x2c9>;
+                        no-map;
+                };
+
+                #mainline
+
+                xbl_aop_mem: memory@80700000 {
+                        no-map;
+                        reg = <0x0 0x80700000 0x0 0x160000>;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                reserved-memory@80860000 {
+                        compatible = "qcom,cmd-db";
+                        no-map;
+                        reg = <0x00 0x80860000 0x00 0x20000>;
+                        phandle = <0x2c9>;
+                };
+
+                #fdt
+
+                reserved-memory@80860000 {
+                        compatible = "qcom,cmd-db";
+                        reg = <0x00 0x80860000 0x00 0x20000>;
+                        phandle = <0x2ca>;
+                        no-map;
+                };
+
+                #mainline
+
+                cmd_db: memory@80860000 {
+                        compatible = "qcom,cmd-db";
+                        reg = <0x0 0x80860000 0x0 0x20000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                res_xbl_uefi_log_region@80880000 {
+                        no-map;
+                        reg = <0x00 0x80880000 0x00 0x14000>;
+                        phandle = <0x2ca>;
+                };
+
+                #fdt
+
+                res_xbl_uefi_log_region@80880000 {
+                        reg = <0x00 0x80880000 0x00 0x14000>;
+                        phandle = <0x2cb>;
+                        no-map;
+                };
+
+                #mainline
+
+                reserved_xbl_uefi_log: memory@80880000 {
+                        reg = <0x0 0x80880000 0x0 0x14000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                smem_region@80900000 {
+                        no-map;
+                        reg = <0x00 0x80900000 0x00 0x200000>;
+                        phandle = <0x96>;
+                };
+
+                #fdt
+
+
+                smem_region@80900000 {
+                        reg = <0x00 0x80900000 0x00 0x200000>;
+                        phandle = <0x95>;
+                        no-map;
+                };
+
+                #mainline
+
+                smem@80900000 {
+                        compatible = "qcom,smem";
+                        reg = <0x0 0x80900000 0x0 0x200000>;
+                        hwlocks = <&tcsr_mutex 3>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                cpucp_fw_region@80b00000 {
+                        no-map;
+                        reg = <0x00 0x80b00000 0x00 0x100000>;
+                        phandle = <0x2cb>;
+                };
+
+                #fdt
+
+                cpucp_fw_region@80b00000 {
+                        reg = <0x00 0x80b00000 0x00 0x100000>;
+                        phandle = <0x2cc>;
+                        no-map;
+                };
+
+                #mainline
+
+                cpucp_fw_mem: memory@80b00000 {
+                        reg = <0x0 0x80b00000 0x0 0x100000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                cdsp_secure_heap@80c00000 {
+                        no-map;
+                        reg = <0x00 0x80c00000 0x00 0x4600000>;
+                        phandle = <0xe3>;
+                };
+
+                #fdt
+
+                cdsp_secure_heap@80c00000 {
+                        reg = <0x00 0x80c00000 0x00 0x4600000>;
+                        phandle = <0xe4>;
+                        no-map;
+                };
+
+                #mainline
+
+                cdsp_secure_heap: memory@80c00000 {
+                        reg = <0x0 0x80c00000 0x0 0x4600000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                pil_camera_region@85200000 {
+                        no-map;
+                        reg = <0x00 0x85200000 0x00 0x500000>;
+                        phandle = <0x2ac>;
+                };
+
+                #fdt
+
+                pil_camera_region@85200000 {
+                        reg = <0x00 0x85200000 0x00 0x500000>;
+                        phandle = <0x2ad>;
+                        no-map;
+                };
+
+                #mainline
+
+                pil_camera_mem: mmeory@85200000 {
+                        reg = <0x0 0x85200000 0x0 0x500000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                pil_video_region@85700000 {
+                        no-map;
+                        reg = <0x00 0x85700000 0x00 0x500000>;
+                        phandle = <0xc9>;
+                };
+
+                #fdt
+
+                pil_video_region@85700000 {
+                        reg = <0x00 0x85700000 0x00 0x500000>;
+                        phandle = <0xc8>;
+                        no-map;
+                };
+
+                #mainline
+
+                pil_video_mem: memory@85700000 {
+                        reg = <0x0 0x85700000 0x0 0x500000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                pil_cvp_region@85c00000 {
+                        no-map;
+                        reg = <0x00 0x85c00000 0x00 0x500000>;
+                        phandle = <0xcd>;
+                };
+
+                #fdt
+
+                pil_cvp_region@85c00000 {
+                        reg = <0x00 0x85c00000 0x00 0x500000>;
+                        phandle = <0xcc>;
+                        no-map;
+                };
+
+                #mainline
+
+                pil_cvp_mem: memory@85c00000 {
+                        reg = <0x0 0x85c00000 0x0 0x500000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                pil_adsp_region@86100000 {
+                        no-map;
+                        reg = <0x00 0x86100000 0x00 0x2100000>;
+                        phandle = <0xc0>;
+                };
+
+                #fdt
+
+                pil_adsp_region@86100000 {
+                        reg = <0x00 0x86100000 0x00 0x2100000>;
+                        phandle = <0xbf>;
+                        no-map;
+                };
+
+                #mainline
+
+                pil_adsp_mem: memory@86100000 {
+                        reg = <0x0 0x86100000 0x0 0x2100000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                pil_slpi_region@88200000 {
+                        no-map;
+                        reg = <0x00 0x88200000 0x00 0x1500000>;
+                        phandle = <0xcf>;
+                };
+
+                #fdt
+
+                pil_slpi_region@88200000 {
+                        reg = <0x00 0x88200000 0x00 0x1500000>;
+                        phandle = <0xce>;
+                        no-map;
+                };
+
+                #mainline
+
+                pil_slpi_mem: memory@88200000 {
+                        reg = <0x0 0x88200000 0x0 0x1500000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                pil_cdsp_region@89700000 {
+                        no-map;
+                        reg = <0x00 0x89700000 0x00 0x1400000>;
+                        phandle = <0xc3>;
+                };
+
+                #fdt
+
+                pil_cdsp_region@89700000 {
+                        reg = <0x00 0x89700000 0x00 0x1400000>;
+                        phandle = <0xc2>;
+                        no-map;
+                };
+
+                #mainline
+
+                pil_cdsp_mem: memory@89700000 {
+                        reg = <0x0 0x89700000 0x0 0x1e00000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                pil_ipa_fw_region@8b500000 {
+                        no-map;
+                        reg = <0x00 0x8b500000 0x00 0x10000>;
+                        phandle = <0x2cc>;
+                };
+
+                #fdt
+
+                pil_ipa_fw_region@8b500000 {
+                        reg = <0x00 0x8b500000 0x00 0x10000>;
+                        phandle = <0x2cd>;
+                        no-map;
+                };
+
+                #mainline
+
+                pil_ipa_fw_mem: memory@8b500000 {
+                        reg = <0x0 0x8b500000 0x0 0x10000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                pil_ipa_gsi_region@8b510000 {
+                        no-map;
+                        reg = <0x00 0x8b510000 0x00 0xa000>;
+                        phandle = <0xca>;
+                };
+
+                #fdt
+
+                pil_ipa_gsi_region@8b510000 {
+                        reg = <0x00 0x8b510000 0x00 0xa000>;
+                        phandle = <0xc9>;
+                        no-map;
+                };
+
+                #mainline
+
+                pil_ipa_gsi_mem: memory@8b510000 {
+                        reg = <0x0 0x8b510000 0x0 0xa000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                pil_gpu_region@8b51a000 {
+                        no-map;
+                        reg = <0x00 0x8b51a000 0x00 0x2000>;
+                        phandle = <0x298>;
+                };
+
+                #fdt
+
+                pil_gpu_region@8b51a000 {
+                        reg = <0x00 0x8b51a000 0x00 0x2000>;
+                        phandle = <0x299>;
+                        no-map;
+                };
+
+                #mainline
+
+                pil_gpu_mem: memory@8b51a000 {
+                        reg = <0x0 0x8b51a000 0x0 0x2000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                pil_spss_region@8b600000 {
+                        no-map;
+                        reg = <0x00 0x8b600000 0x00 0x100000>;
+                        phandle = <0xd2>;
+                };
+
+                #fdt
+
+                pil_spss_region@8b600000 {
+                        reg = <0x00 0x8b600000 0x00 0x100000>;
+                        phandle = <0xd1>;
+                        no-map;
+                };
+
+                #mainline
+
+                pil_spss_mem: memory@8b600000 {
+                        reg = <0x0 0x8b600000 0x0 0x100000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                modem_region@8b800000 {
+                        no-map;
+                        reg = <0x00 0x8b800000 0x00 0x10000000>;
+                        phandle = <0xbb>;
+                };
+
+                #fdt
+
+                modem_region@8b800000 {
+                        reg = <0x00 0x8b800000 0x00 0x10000000>;
+                        phandle = <0xba>;
+                        no-map;
+                };
+
+                #mainline 
+
+                pil_modem_mem: memory@8b800000 {
+                        reg = <0x0 0x8b800000 0x0 0x10000000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                qheebsp_dbg_vm_hyp_region@d0000000 {
+                        no-map;
+                        phandle = <0x2cd>;
+                };
+
+                #fdt
+
+                qheebsp_dbg_vm_hyp_region@d0000000 {
+                        phandle = <0x2ce>;
+                        no-map;
+                };
+
+                #mainline
+
+                hyp_reserved_mem: memory@d0000000 {
+                        reg = <0x0 0xd0000000 0x0 0x800000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                pil_trustedvm_region@d0800000 {
+                        no-map;
+                        phandle = <0xd3>;
+                };
+
+                #fdt
+
+                pil_trustedvm_region@d0800000 {
+                        phandle = <0xd2>;
+                        no-map;
+                };
+
+                #mainline
+
+                pil_trustedvm_mem: memory@d0800000 {
+                        reg = <0x0 0xd0800000 0x0 0x76f7000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                qrtr-shmem {
+                        no-map;
+                        reg = <0x00 0xd7ef7000 0x00 0x9000>;
+                        phandle = <0x2e>;
+                };
+
+                #fdt
+
+                qrtr-shmem {
+                        reg = <0x00 0xd7ef7000 0x00 0x9000>;
+                        phandle = <0x2e>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                neuron_block@0 {
+                        no-map;
+                        reg = <0x00 0xd7f00000 0x00 0x80000>;
+                        phandle = <0x2b>;
+                };
+
+                #fdt
+
+                neuron_block@0 {
+                        reg = <0x00 0xd7f00000 0x00 0x80000>;
+                        phandle = <0x2b>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                neuron_block@1 {
+                        no-map;
+                        reg = <0x00 0xd7f80000 0x00 0x80000>;
+                        phandle = <0x2c>;
+                };
+
+                #fdt
+
+                neuron_block@1 {
+                        reg = <0x00 0xd7f80000 0x00 0x80000>;
+                        phandle = <0x2c>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                removed_region@d8800000 {
+                        no-map;
+                        reg = <0x00 0xd8800000 0x00 0x6800000>;
+                        phandle = <0x2ce>;
+                };
+
+                #fdt
+
+                removed_region@d8800000 {
+                        reg = <0x00 0xd8800000 0x00 0x8e00000>;
+                        phandle = <0x2cf>;
+                        no-map;
+                };
+
+                #mainline
+
+                removed_mem: memory@d8800000 {
+                        reg = <0x0 0xd8800000 0x0 0x6800000>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                adsp_region {
+                        compatible = "shared-dma-pool";
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        reusable;
+                        alignment = <0x00 0x400000>;
+                        size = <0x00 0xc00000>;
+                        phandle = <0x9a>;
+                };
+
+                #fdt
+
+                adsp_region {
+                        alignment = <0x00 0x400000>;
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        compatible = "shared-dma-pool";
+                        size = <0x00 0xc00000>;
+                        phandle = <0x99>;
+                        reusable;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                sdsp_region {
+                        compatible = "shared-dma-pool";
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        reusable;
+                        alignment = <0x00 0x400000>;
+                        size = <0x00 0x800000>;
+                        phandle = <0xe2>;
+                };
+
+                #fdt
+
+                sdsp_region {
+                        alignment = <0x00 0x400000>;
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        compatible = "shared-dma-pool";
+                        size = <0x00 0x800000>;
+                        phandle = <0xe3>;
+                        reusable;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                cdsp_region {
+                        compatible = "shared-dma-pool";
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        reusable;
+                        alignment = <0x00 0x400000>;
+                        size = <0x00 0x400000>;
+                        phandle = <0x287>;
+                };
+
+                #fdt
+
+                cdsp_region {
+                        alignment = <0x00 0x400000>;
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        compatible = "shared-dma-pool";
+                        size = <0x00 0x400000>;
+                        phandle = <0x288>;
+                        reusable;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                user_contig_region {
+                        compatible = "shared-dma-pool";
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        reusable;
+                        alignment = <0x00 0x400000>;
+                        size = <0x00 0x1000000>;
+                        phandle = <0xe5>;
+                };
+
+                #fdt
+
+                user_contig_region {
+                        alignment = <0x00 0x400000>;
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        compatible = "shared-dma-pool";
+                        size = <0x00 0x1000000>;
+                        phandle = <0xe6>;
+                        reusable;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                qseecom_region {
+                        compatible = "shared-dma-pool";
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        reusable;
+                        alignment = <0x00 0x400000>;
+                        size = <0x00 0x1400000>;
+                        phandle = <0xd4>;
+                };
+
+                #fdt
+
+                qseecom_region {
+                        alignment = <0x00 0x400000>;
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        compatible = "shared-dma-pool";
+                        size = <0x00 0x1400000>;
+                        phandle = <0xd3>;
+                        reusable;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                qseecom_ta_region {
+                        compatible = "shared-dma-pool";
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        reusable;
+                        alignment = <0x00 0x400000>;
+                        size = <0x00 0x1000000>;
+                        phandle = <0xe6>;
+                };
+
+                #fdt
+
+                qseecom_ta_region {
+                        alignment = <0x00 0x400000>;
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        compatible = "shared-dma-pool";
+                        size = <0x00 0x1000000>;
+                        phandle = <0xe7>;
+                        reusable;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                secure_display_region {
+                        compatible = "shared-dma-pool";
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        reusable;
+                        alignment = <0x00 0x400000>;
+                        size = <0x00 0xa400000>;
+                        phandle = <0xe7>;
+                };
+
+                #fdt
+
+                secure_display_region {
+                        alignment = <0x00 0x400000>;
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        compatible = "shared-dma-pool";
+                        size = <0x00 0xa400000>;
+                        phandle = <0xe8>;
+                        reusable;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                cnss_wlan_region {
+                        compatible = "shared-dma-pool";
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        reusable;
+                        alignment = <0x00 0x400000>;
+                        #size = <0x00 0x1400000>;
+                        phandle = <0x290>;
+                };
+
+                #fdt
+
+                cnss_wlan_region {
+                        alignment = <0x00 0x400000>;
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        compatible = "shared-dma-pool";
+                        #size = <0x00 0x1400000>;
+                        phandle = <0x291>;
+                        reusable;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                linux,cma {
+                        compatible = "shared-dma-pool";
+                        alloc-ranges = <0x00 0x00 0x00 0xdfffffff>;
+                        reusable;
+                        alignment = <0x00 0x400000>;
+                        size = <0x00 0x2000000>;
+                        linux,cma-default;
+                };
+
+                #fdt
+
+                linux,cma {
+                        linux,cma-default;
+                        alignment = <0x00 0x400000>;
+                        alloc-ranges = <0x00 0x00 0x00 0xdfffffff>;
+                        compatible = "shared-dma-pool";
+                        size = <0x00 0x2000000>;
+                        reusable;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                mem_dump_region {
+                        compatible = "shared-dma-pool";
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        reusable;
+                        size = <0x00 0x3000000>;
+                        phandle = <0xce>;
+                };
+
+                #fdt
+
+                mem_dump_region {
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        compatible = "shared-dma-pool";
+                        size = <0x00 0x3000000>;
+                        phandle = <0xcd>;
+                        reusable;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                sp_region {
+                        compatible = "shared-dma-pool";
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        reusable;
+                        alignment = <0x00 0x400000>;
+                        size = <0x00 0x1000000>;
+                        phandle = <0xe4>;
+                };
+
+                #fdt
+
+                sp_region {
+                        alignment = <0x00 0x400000>;
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        compatible = "shared-dma-pool";
+                        size = <0x00 0x1000000>;
+                        phandle = <0xe5>;
+                        reusable;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                audio_cma_region {
+                        compatible = "shared-dma-pool";
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        reusable;
+                        alignment = <0x00 0x400000>;
+                        size = <0x00 0x1c00000>;
+                        phandle = <0xe8>;
+                };
+
+                #fdt
+
+                audio_cma_region {
+                        alignment = <0x00 0x400000>;
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        compatible = "shared-dma-pool";
+                        size = <0x00 0x1c00000>;
+                        phandle = <0xe9>;
+                        reusable;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                splash_region {
+                        reg = <0x00 0xe1000000 0x00 0x2300000>;
+                        label = "cont_splash_region";
+                        phandle = <0x2cf>;
+                };
+
+                #fdt
+
+                splash_region {
+                        label = "cont_splash_region";
+                        reg = <0x00 0xe4d00000 0x00 0x2300000>;
+                        phandle = <0x2d0>;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                demura_region_0 {
+                        reg = <0x00 0x00 0x00 0x00>;
+                        label = "demura hfc region 0";
+                        phandle = <0x2d0>;
+                };
+
+                #fdt
+
+                demura_region_0 {
+                        label = "demura hfc region 0";
+                        reg = <0x00 0x00 0x00 0x00>;
+                        phandle = <0x2d1>;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                demura_region_1 {
+                        reg = <0x00 0x00 0x00 0x00>;
+                        label = "demura hfc region 1";
+                        phandle = <0x2d1>;
+                };
+
+                #fdt
+
+                demura_region_1 {
+                        label = "demura hfc region 1";
+                        reg = <0x00 0x00 0x00 0x00>;
+                        phandle = <0x2d2>;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                dfps_data_region {
+                        reg = <0x00 0xe3300000 0x00 0x100000>;
+                        label = "dfps_data_region";
+                        phandle = <0x29d>;
+                };
+
+                #fdt
+
+                dfps_data_region {
+                        label = "dfps_data_region";
+                        reg = <0x00 0xe7000000 0x00 0x100000>;
+                        phandle = <0x29e>;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                memshare_region {
+                        compatible = "shared-dma-pool";
+                        no-map;
+                        alloc-ranges = <0x00 0x00 0x00 0xdfffffff>;
+                        alignment = <0x00 0x100000>;
+                        size = <0x00 0x800000>;
+                        phandle = <0x30>;
+                };
+
+                #fdt
+
+                memshare_region {
+                        alignment = <0x00 0x100000>;
+                        alloc-ranges = <0x00 0x00 0x00 0xdfffffff>;
+                        compatible = "shared-dma-pool";
+                        size = <0x00 0x800000>;
+                        phandle = <0x30>;
+                        no-map;
+                };
+
+# ------------------------------------------------------------------------------#
+
+                #vendor_boot
+
+                non_secure_display_region {
+                        compatible = "shared-dma-pool";
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        reusable;
+                        alignment = <0x00 0x400000>;
+                        size = <0x00 0x6400000>;
+                        phandle = <0xe9>;
+                };
+
+                #fdt
+
+                non_secure_display_region {
+                        alignment = <0x00 0x400000>;
+                        alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+                        compatible = "shared-dma-pool";
+                        size = <0x00 0x6400000>;
+                        phandle = <0xea>;
+                        reusable;
+                };
+        };
+
+};
+
+
+
+# collected from fdt , not found in mainline or vendor_boot dts but it is impor...
+
+	reserved-memory {
+		#address-cells = <0x02>;
+		#size-cells = <0x02>;
+		ranges;
+		phandle = <0x2c7>;
+
+		ramoops@0xE9700000 {
+			rsv03info-size = <0x8000>;
+			devinfo-size = <0x8000>;
+			ecc-size = <0x00>;
+			rsv04info-size = <0x8000>;
+			record-size = <0x40000>;
+			rsv05info-size = <0x8000>;
+			pmsg-size = <0x200000>;
+			dumpinfo-size = <0x8000>;
+			rsv01info-size = <0x8000>;
+			compatible = "ramoops";
+			console-size = <0x40000>;
+			reg = <0x00 0xe9700000 0x00 0x5b8000>;
+			phandle = <0x6f6>;
+			rsv02info-size = <0x8000>;
+			ftrace-size = <0x200000>;
+		};
+
+		kboot_uboot_logmem@0x9FE00000 {
+			compatible = "oppo,xbl_uefi_kbootlog";
+			xbluefi-offset = <0x1f7000>;
+			reg = <0x00 0x9fe00000 0x00 0x200000>;
+			phandle = <0x6f5>;
+			no-map;
+		};
+
+	};
+
+};
+
+
+
+# collected from mainline for check this left reserved memory not available on my fdt or vendor_boot
+
+
+	reserved_memory: reserved-memory {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+
+		rmtfs_mem: memory@9b800000 {
+			compatible = "qcom,rmtfs-mem";
+			reg = <0x0 0x9b800000 0x0 0x280000>;
+			no-map;
+
+			qcom,client-id = <1>;
+			qcom,vmid = <15>;
+		};
+
+		qrtr_shbuf: memory@d7ef7000 {
+			reg = <0x0 0xd7ef7000 0x0 0x9000>;
+			no-map;
+		};
+
+		chan0_shbuf: memory@d7f00000 {
+			reg = <0x0 0xd7f00000 0x0 0x80000>;
+			no-map;
+		};
+
+		chan1_shbuf: memory@d7f80000 {
+			reg = <0x0 0xd7f80000 0x0 0x80000>;
+			no-map;
+		};
+
+	};
+
+};
+
