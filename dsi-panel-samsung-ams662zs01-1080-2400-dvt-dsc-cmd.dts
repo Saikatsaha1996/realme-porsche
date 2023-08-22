@@ -3,8 +3,6 @@
 / {
 	mdp {
 		compatible = "qcom,mdss_mdp";
-
-		/* Add your panels here */
 		dsi_samsung_ams662zs01_dvt_dsc_cmd: qcom,mdss_dsi_samsung_ams662zs01_dvt_dsc_cmd {
 			qcom,mdss-dsi-panel-name = "samsung ams662zs01 fhd cmd mode dsc dsi panel";
 			//oplus,mdss-dsi-vendor-name = "AMS662ZS01";
