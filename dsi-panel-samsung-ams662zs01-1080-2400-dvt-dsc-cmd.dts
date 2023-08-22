@@ -1,12 +1,15 @@
 /dts-v1/;
+/plugin/;
 
 / {
 	mdp {
 		compatible = "qcom,mdss_mdp";
+
+		/* Add your panels here */
 		dsi_samsung_ams662zs01_dvt_dsc_cmd: qcom,mdss_dsi_samsung_ams662zs01_dvt_dsc_cmd {
 			qcom,mdss-dsi-panel-name = "samsung ams662zs01 fhd cmd mode dsc dsi panel";
-			//oplus,mdss-dsi-vendor-name = "AMS662ZS01";
-                        //oplus,mdss-dsi-manufacture = "samsung1024";
+			oplus,mdss-dsi-vendor-name = "AMS662ZS01";
+                        oplus,mdss-dsi-manufacture = "samsung1024";
                         qcom,mdss-dsi-panel-type = "dsi_cmd_mode";
                         qcom,mdss-dsi-virtual-channel-id = <0>;
 		        qcom,mdss-dsi-stream = <0>;
@@ -36,9 +39,88 @@
 		        qcom,mdss-dsi-te-check-enable;
 		        qcom,mdss-dsi-te-using-te-pin;
 		        //qcom,mdss-dsi-lp11-init;
+                        qcom,dsi-display-active;
 		        qcom,mdss-dsi-wr-mem-start = <0x2c>;
 		        qcom,mdss-dsi-wr-mem-continue = <0x3c>;
 		        qcom,mdss-dsi-panel-jitter = <0x4 0x1>;
+
+                        qcom,panel-supply-entries = <&dsi_panel_oplus_pwr_supply>;
+                        qcom,mdss-dsi-panel-controller = <&mdss_dsi0>;
+                        qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
+                        qcom,mdss-dsi-dc-backlight-level = <520>;
+                        qcom,mdss-dsi-bl-min-level = <1>;
+                        qcom,mdss-dsi-bl-normal-max-level = <2047>;
+                        qcom,mdss-dsi-bl-max-level = <4095>;
+                        qcom,mdss-brightness-normal-max-level = <2047>;
+                        qcom,mdss-brightness-max-level = <4095>;
+                        qcom,mdss-brightness-default-level = <1600>;
+                        qcom,platform-te-gpio = <&tlmm 82 0>;
+                        qcom,platform-reset-gpio = <&tlmm 24 0>;
+                        qcom,platform-panel-vout-gpio = <&tlmm 25 0>;
+                        qcom,ulps-enabled;
+                        qcom,dsi-dyn-clk-enable;
+                        qcom,dsi-dyn-clk-list = <1100000000 1100000000>;
+                        oplus,osc-support;
+                        oplus,mdss-dsi-osc-clk-mode0-rate = <180300>;
+                        oplus,mdss-dsi-osc-clk-mode1-rate = <182300>;
+                        qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0";
+                        oplus,dsi-fod-brightness = <0 0xff>,
+                                        <2 0xf2>,
+                                        <4 0xf1>,
+                                        <6 0xf0>,
+                                        <8 0xee>,
+                                        <10 0xee>,
+                                        <20 0xed>,
+                                        <40 0xec>,
+                                        <60 0xeb>,
+                                        <90 0xea>,
+                                        <140 0xe9>,
+                                        <200 0xe5>,
+                                        <300 0xde>,
+                                        <450 0xd1>,
+                                        <600 0xc1>,
+                                        <750 0xb1>,
+                                        <900 0xa1>,
+                                        <1050 0x91>,
+                                        <1200 0x81>,
+                                        <1400 0x6c>,
+                                        <1600 0x4c>,
+                                        <1800 0x3c>,
+                                        <2047 0x24>;
+
+                        oplus,dsi-dc-brightness = <0 0xff>,
+                                        <2 0xFC>,
+                                        <4 0xF9>,
+                                        <6 0xF9>,
+                                        <8 0xF8>,
+                                        <10 0xF7>,
+                                        <15 0xF6>,
+                                        <20 0xF4>,
+                                        <30 0xF0>,
+                                        <40 0xEB>,
+                                        <50 0xE6>,
+                                        <60 0xE1>,
+                                        <70 0xDD>,
+                                        <80 0xD8>,
+                                        <100 0xCF>,
+                                        <120 0xC5>,
+                                        <150 0xB9>,
+                                        <200 0xA2>,
+                                        <250 0x8C>,
+                                        <300 0x76>,
+                                        <350 0x5B>,
+                                        <400 0x44>,
+                                        <450 0x2C>,
+                                        <500 0x0D>,
+                                        <520 0x00>;
+
+                        qcom,mdss-dsi-panel-phy-timings = [00 24 0A 0A 1A 19 09 0A 09 02 04 00 1E 0F];
+                        qcom,display-topology = <1 1 1>,<2 2 1>;
+                        qcom,default-topology-index = <1>;
+                        oplus,apollo_backlight_enable;
+                        oplus,apollo-sync-brightness-level = <540>;
+                        qcom,panel_voltage_vddi_name = "vddio";
+                        qcom,panel_voltage_vddi = <0 1800000 1850000 1950000>;
 
 		        /* HDR Setting */
 
@@ -468,104 +550,3 @@
 		};
 	};
 };
-
-
-&soc {
-	dsi_samsung_ams662zs01_dvt_dsc_cmd {
-		qcom,dsi-display-active;
-	};
-};
-
-&dsi_samsung_ams662zs01_dvt_dsc_cmd {
-	qcom,panel-supply-entries = <&dsi_panel_oplus_pwr_supply>;
-	qcom,mdss-dsi-panel-controller = <&mdss_dsi0>;
-	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
-	qcom,mdss-dsi-dc-backlight-level = <520>;
-	qcom,mdss-dsi-bl-min-level = <1>;
-	qcom,mdss-dsi-bl-normal-max-level = <2047>;
-	qcom,mdss-dsi-bl-max-level = <4095>;
-	qcom,mdss-brightness-normal-max-level = <2047>;
-	qcom,mdss-brightness-max-level = <4095>;
-	qcom,mdss-brightness-default-level = <1600>;
-	qcom,platform-te-gpio = <&tlmm 82 0>;
-	qcom,platform-reset-gpio = <&tlmm 24 0>;
-	qcom,platform-panel-vout-gpio = <&tlmm 25 0>;
-	qcom,ulps-enabled;
-	qcom,dsi-dyn-clk-enable;
-	qcom,dsi-dyn-clk-list = <1100000000 1100000000>;
-	oplus,osc-support;
-	oplus,mdss-dsi-osc-clk-mode0-rate = <180300>;
-	oplus,mdss-dsi-osc-clk-mode1-rate = <182300>;
-	qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0";
-
-	oplus,dsi-fod-brightness = <0 0xff>,
-			<2 0xf2>,
-			<4 0xf1>,
-			<6 0xf0>,
-			<8 0xee>,
-			<10 0xee>,
-			<20 0xed>,
-			<40 0xec>,
-			<60 0xeb>,
-			<90 0xea>,
-			<140 0xe9>,
-			<200 0xe5>,
-			<300 0xde>,
-			<450 0xd1>,
-			<600 0xc1>,
-			<750 0xb1>,
-			<900 0xa1>,
-			<1050 0x91>,
-			<1200 0x81>,
-			<1400 0x6c>,
-			<1600 0x4c>,
-			<1800 0x3c>,
-			<2047 0x24>;
-
-	oplus,dsi-dc-brightness = <0 0xff>,
-			<2 0xFC>,
-			<4 0xF9>,
-			<6 0xF9>,
-			<8 0xF8>,
-			<10 0xF7>,
-			<15 0xF6>,
-			<20 0xF4>,
-			<30 0xF0>,
-			<40 0xEB>,
-			<50 0xE6>,
-			<60 0xE1>,
-			<70 0xDD>,
-			<80 0xD8>,
-			<100 0xCF>,
-			<120 0xC5>,
-			<150 0xB9>,
-			<200 0xA2>,
-			<250 0x8C>,
-			<300 0x76>,
-			<350 0x5B>,
-			<400 0x44>,
-			<450 0x2C>,
-			<500 0x0D>,
-			<520 0x00>;
-
-	qcom,mdss-dsi-display-timings {
-		timing0 { /* FHD+ 60hz 550Mhz 1100Mbps */
-			qcom,mdss-dsi-panel-phy-timings = [00 24 0A 0A 1A 19 09 0A 09 02 04 00 1E 0F];
-			qcom,display-topology = <1 1 1>,<2 2 1>;
-			qcom,default-topology-index = <1>;
-		};
-	};
-};
-
-&dsi_samsung_ams662zs01_dvt_dsc_cmd {
-	oplus,apollo_backlight_enable;
-	oplus,apollo-sync-brightness-level = <540>;
-};
-
-&dsi_samsung_ams662zs01_dvt_dsc_cmd {
-	qcom,panel_voltage_vddi_name = "vddio";
-	qcom,panel_voltage_vddi = <0 1800000 1850000 1950000>;
-	qcom,panel_voltage_vddr_name = "vddio";
-	qcom,panel_voltage_vddr = <1 1800000 1850000 1950000>;
-};
-
