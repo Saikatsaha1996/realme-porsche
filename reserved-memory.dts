@@ -548,6 +548,13 @@
                         no-map;
                 };
 
+                # mainline
+
+		qrtr_shbuf: memory@d7ef7000 {
+			reg = <0x0 0xd7ef7000 0x0 0x9000>;
+			no-map;
+		};
+
 # ------------------------------------------------------------------------------#
 
                 #vendor_boot
@@ -565,6 +572,12 @@
                         phandle = <0x2b>;
                         no-map;
                 };
+                # mainline
+
+		chan0_shbuf: memory@d7f00000 {
+			reg = <0x0 0xd7f00000 0x0 0x80000>;
+			no-map;
+		};
 
 # ------------------------------------------------------------------------------#
 
@@ -583,6 +596,13 @@
                         phandle = <0x2c>;
                         no-map;
                 };
+
+                # mainline
+
+		chan1_shbuf: memory@d7f80000 {
+			reg = <0x0 0xd7f80000 0x0 0x80000>;
+			no-map;
+		};
 
 # ------------------------------------------------------------------------------#
 
@@ -1051,23 +1071,6 @@
 			qcom,client-id = <1>;
 			qcom,vmid = <15>;
 		};
-
-		qrtr_shbuf: memory@d7ef7000 {
-			reg = <0x0 0xd7ef7000 0x0 0x9000>;
-			no-map;
-		};
-
-		chan0_shbuf: memory@d7f00000 {
-			reg = <0x0 0xd7f00000 0x0 0x80000>;
-			no-map;
-		};
-
-		chan1_shbuf: memory@d7f80000 {
-			reg = <0x0 0xd7f80000 0x0 0x80000>;
-			no-map;
-		};
-
 	};
-
 };
 
